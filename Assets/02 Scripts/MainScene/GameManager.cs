@@ -10,20 +10,27 @@ public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI localTime;
     public TextMeshProUGUI gameTime;
+
     public TextMeshProUGUI plName;
 
-    public GameObject inputFieldImg;
-    public TMP_InputField playerNameInput;
+    public GameObject inputFieldImg; //이름변경시 켜지고 끌 인풋필드를 가진 부모 이미지 UI
+    public TMP_InputField playerNameInput; //인풋필드 UI
+
+    public GameObject checkParticipantBar;
+    public TextMeshProUGUI participantTxt;
+    public GameObject player;
 
     private float currentTime;
-    private bool isEnoughLongName = false;
+    private bool isEnoughLongName = false; //이름변경시 이름길이 체크 불값 
+
+    private string blank = System.Environment.NewLine;
 
     void Start()
     {
         Time.timeScale = 1;
         GetName();
     }
-    
+
     void Update()
     {
         CalcTime();
@@ -39,8 +46,10 @@ public class GameManager : MonoBehaviour
         gameTime.text = "생존 시간 : " + currentTime.ToString("N1");
     }
 
+    // 이름변경 로직 
     void GetName()
     {
+        player.GetComponent<Characters>().characterName = InputManager.playerName;
         plName.text = InputManager.playerName;
     }
 
@@ -52,12 +61,13 @@ public class GameManager : MonoBehaviour
 
     private void InputName()
     {
+        player.GetComponent<Characters>().characterName = playerNameInput.text;
         plName.text = playerNameInput.text;
     }
 
     public void SubmitChangePlName()
     {
-        plName.text = playerNameInput.text;
+        InputName();
 
         if (1 < plName.text.Length && plName.text.Length < 11)
         {
@@ -79,4 +89,24 @@ public class GameManager : MonoBehaviour
             inputFieldImg.SetActive(false);
         }
     }
+    //이름변경 로직 끝
+
+
+
+    //참석자 표시
+    public void OnClickOpenParticipantCheckBar()
+    {
+        checkParticipantBar.SetActive(true);
+
+        for (int i = 0; i < PlayerManage.players.Count; i++)
+        {
+            participantTxt.text = PlayerManage.players[i].GetComponent<Characters>().characterName; //안됨...
+        }
+    }
+
+    public void OnClickCloseParticipantCheckBar()
+    {
+        checkParticipantBar.SetActive(false);
+    }
+    //참석자표시 끝
 }
