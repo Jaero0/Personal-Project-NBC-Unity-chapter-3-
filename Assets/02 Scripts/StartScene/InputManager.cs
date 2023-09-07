@@ -25,6 +25,7 @@ public class InputManager : MonoBehaviour
         {
             isEnoughLongName = true;
         }
+
     }
 
     public void OnClickChangeToMainScene()
