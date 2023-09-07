@@ -11,8 +11,8 @@ public class PlayerManage : MonoBehaviour
 
     void Awake()
     {
-        AddPlayer(MainPlayer);
         AddPlayer(Character1);
+        AddPlayer(MainPlayer);
     }
 
     public static void AddPlayer(GameObject player)

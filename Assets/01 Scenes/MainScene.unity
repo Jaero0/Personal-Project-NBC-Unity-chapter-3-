@@ -1835,7 +1835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad8e4a69847f4fe4a925abd7f1cdadfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: "\uC5FC\uC608\uCC2C \uD29C\uD130\uB2D8"
+  characterName: "\uC5D0\uD5E4\uC774~\uC8E0\uC84C\uB124\uC774\uAC70"
 --- !u!1 &783034971
 GameObject:
   m_ObjectHideFlags: 0

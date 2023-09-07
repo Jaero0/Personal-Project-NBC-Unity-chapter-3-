@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     private string blank = System.Environment.NewLine;
 
+    
     void Start()
     {
         Time.timeScale = 1;
@@ -98,9 +99,13 @@ public class GameManager : MonoBehaviour
     {
         checkParticipantBar.SetActive(true);
 
+        string participantsNames = "";
+
         for (int i = 0; i < PlayerManage.players.Count; i++)
         {
-            participantTxt.text = PlayerManage.players[i].GetComponent<Characters>().characterName; //¾ÈµÊ...
+            string playerName = PlayerManage.players[i].GetComponent<Characters>().characterName;
+            participantsNames += playerName + "\n\n";
+            participantTxt.text = participantsNames;
         }
     }
 
